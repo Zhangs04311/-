@@ -1,0 +1,42 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "InsertBook";
+}
+<link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" />
+<h1 style="margin-bottom:20px">書籍登録</h1>
+
+<div clss ="row" style="margin-bottom:50px">
+    <div class="col-md-4">
+        <form asp-controller="Manager" asp-action="InsertBook">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.isbn" class="h5"></label>
+                <input asp-for="@Model.isbn" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.nm_book" class="h5"></label>
+                <input asp-for="@Model.nm_book" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.kn_book" class="h5"></label>
+                <input asp-for="@Model.kn_book" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.publisher" class="h5"></label>
+                <input asp-for="@Model.publisher" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.note" class="h5"></label>
+                <input asp-for="@Model.note" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.flg_disposal" class="h5"></label>
+                <input asp-for="@Model.flg_disposal" class="form-control" />
+            </div>
+            <div class="form-group form-inline">
+                <input class="btn" type="submit" value="登録" style="margin-right:60%" />
+                <a href="Index"><input class="btn" type="button" value="戻る" /></a>
+            </div>
+        </form>
+    </div>
+</div>

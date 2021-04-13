@@ -1,0 +1,42 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "UpdateBook2";
+}
+<link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" />
+<h1>書籍編集</h1>
+
+<div clss="row" style="margin-bottom:50px">
+    <div class="col-md-4">
+        <form asp-controller="Manager" asp-action="UpdateBook2">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.isbn" class="h5"></label>
+                <input asp-for="@Model.isbn" class="form-control" value="@Model.isbn" readonly ="readonly">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.nm_book" class="h5"></label>
+                <input asp-for="@Model.nm_book" class="form-control" value="@Model.nm_book"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.kn_book" class="h5"></label>
+                <input asp-for="@Model.kn_book" class="form-control" value="@Model.kn_book"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.publisher" class="h5"></label>
+                <input asp-for="@Model.publisher" class="form-control" value="@Model.publisher"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.note" class="h5"></label>
+                <input asp-for="@Model.note" class="form-control" value="@Model.note"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.flg_disposal" class="h5"></label>
+                <input asp-for="@Model.flg_disposal" class="form-control" value="@Model.flg_disposal"/>
+            </div>
+            <div class="form-group form-inline">
+                <input class="btn" type="submit" value="更新" style="margin-right:60%" />
+                <input class="btn" asp-controller="Manager" asp-action="UpdateBook" type="submit" value="戻る" />
+            </div>
+        </form>
+    </div>
+</div>

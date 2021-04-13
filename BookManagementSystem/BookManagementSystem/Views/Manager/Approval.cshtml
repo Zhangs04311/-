@@ -1,0 +1,44 @@
+﻿@model ApprovalModel
+@{
+    ViewData["Title"] = "Approval";
+}
+<link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" />
+<h1 style="margin-bottom:50px;">申請貸出承認</h1>
+
+<h4 style="padding-left:16%">承認待ちリスト</h4>
+
+@using (Html.BeginForm("Approval", "Manager"))
+{
+    <table border="1" align="center">
+        <tr style="background-color: #CCD1D1;">
+            <th width="80">申請ID</th>
+            <th width="80">申請者</th>
+            <th width="80">蔵書ID</th>
+            <th width="150">貸出日</th>
+            <th width="150">返却予定日</th>
+            <th width="150">申請日</th>
+            <th width="50"></th>
+        </tr>
+        @foreach (var borrow in Model.borrowList)
+        {
+    <tr>
+        <td>@borrow.id_request</td>
+        <td>@borrow.id_employee</td>
+        <td>@borrow.id_book</td>
+        <td>@borrow.date_borrow</td>
+        <td>@borrow.date</td>
+        <td>@borrow.date_request</td>
+        <td style="text-align:center"><input type="checkbox" name="checks" value="@borrow.id_request" /></td>
+    </tr>
+        }
+    </table>
+    <div style="margin-top: 50px; text-align:center">
+        <input class="btn" style="margin-right: 50%" type="submit" value="承認" />
+        <a href="Index"><input class="btn" type="button" value="戻る" /></a>
+    </div>
+    
+    
+}
+
+
+

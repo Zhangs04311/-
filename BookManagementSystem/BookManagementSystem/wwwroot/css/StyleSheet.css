@@ -1,0 +1,39 @@
+﻿.position{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+ }
+.position h1{
+    line-height:100px;
+}
+.Selectbox {
+    border: 1px solid #2E4053;
+    text-align: center;
+    height: 100px;
+}
+.Selectbox p {
+        background-color: #212F3C;
+        color:white;
+        font-size:medium;
+        text-align:left;
+        padding-top:1px;
+}
+
+.btn {
+    background-color: #212F3C;
+    color: white;
+    box-shadow: 0px 0px 3px gray;
+}
+.loginBox {
+    border: 2px solid #7F8C8D;
+    width: 400px;
+    height: 400px;
+    box-shadow: 3px 3px 3px gray;
+}
+.loginBox h1 {
+        line-height: 100px;
+}
+

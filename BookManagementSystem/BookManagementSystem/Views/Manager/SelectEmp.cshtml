@@ -1,0 +1,54 @@
+﻿@model SelectEmpModel
+@{
+    ViewData["Title"] = "Search";
+}
+<link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" />
+
+
+<h1>社員検索</h1>
+
+<!--検索処理-->
+<form asp-controller="Manager" asp-action="SelectEmp" class="Selectbox">
+    <p>検索条件</p>
+    <div asp-validation-summary="All"></div>
+    
+    <label asp-for="@Model.SelectedName" class="h7"></label>
+    <input style="margin-right:30px;" asp-for="@Model.SelectedName" value="" />
+    <label asp-for="@Model.SelectedMail" class="h7"></label>
+    <input style="margin-right:30px;" asp-for="@Model.SelectedMail" value="" />
+    <label asp-for="@Model.SelectedDepId" class="h7"></label>
+    <input style="margin-right:30px;" asp-for="@Model.SelectedDepId" value="" />
+    <input class="btn"  style="height:33px;" type="submit" value="検索" />
+</form>
+<p></p>
+<div style="margin-bottom:50px">
+    <table border="1">
+        <tr style="background-color: #CCD1D1; color: black;"> 
+            <th>社員ID</th>
+            <th width="130">社員名</th>
+            <th width="200">フリガナ</th>
+            <th width="200">メールアドレス</th>
+            <th width="100">パスワード</th>
+            <th width="60">部署ID</th>
+            <th width="60">管理者フラグ</th>
+            <th width="60">更新者</th>
+            <th width="180">更新日</th>
+            <th></th>
+        </tr>
+        @foreach (var employee in Model.EmpList)
+        {
+            <tr style="height:35px">
+                <td>@employee.id_employee</td>
+                <td>@employee.nm_employee</td>
+                <td>@employee.kn_employee</td>
+                <td>@employee.mail_address</td>
+                <td>@employee.password</td>
+                <td>@employee.id_department</td>
+                <td>@employee.flg_admin</td>
+                <td>@employee.id_update</td>
+                <td>@employee.date_update</td>
+                <td><a href="UpdateEmp/@employee.id_employee"><input type="submit" value="編集" /></a></td>
+            </tr>
+        }
+    </table>
+</div>

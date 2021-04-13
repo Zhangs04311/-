@@ -1,0 +1,27 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" />
+
+
+<div class="row loginBox position">
+    <div class="col-md-6">
+        <h1>ログイン</h1>
+        <form asp-controller="Home" asp-action="Login">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.mail_address" class="h6"></label>
+                <input style="width:300px;" asp-for="@Model.mail_address" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Password" class="h6"></label>
+                <input style="width:300px;" asp-for="@Model.Password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input class="btn" type="submit" value="ログイン" />
+            </div>
+        </form>
+    </div>
+</div>

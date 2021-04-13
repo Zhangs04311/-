@@ -1,0 +1,48 @@
+﻿@model SelectBookModel
+@{
+    ViewData["Title"] = "UpdateBook";
+}
+<link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" />
+
+<h1>書籍編集</h1>
+
+<form asp-controller="Manager" asp-action="UpdateBook" class="Selectbox">
+    <p>検索条件</p>
+    <div asp-validation-summary="All"></div>
+
+    <label asp-for="@Model.SelectedName" class="h7"></label>
+    <input style="margin-right:30px;" asp-for="@Model.SelectedName" value="" />
+    <label asp-for="@Model.SelectedPub" class="h7"></label>
+    <input style="margin-right:30px;" asp-for="@Model.SelectedPub" value="" />
+    <label asp-for="@Model.SelectNote" class="h7"></label>
+    <input style="margin-right:30px;" asp-for="@Model.SelectNote" value="" />
+    <input class="btn" style="height:33px;" type="submit" value="検索" />
+</form>
+<p></p>
+
+<div style="margin-bottom:50px">
+    <table border="1">
+        <tr style="background-color: #CCD1D1;">
+            <th width="40">蔵書ID</th>
+            <th width="200">ISBNコード</th>
+            <th width="250">書籍名</th>
+            <th width="200">出版社</th>
+            <th width="150">特記事項</th>
+            <th>更新日</th>
+            <th width="70"></th>
+        </tr>
+        @foreach (var book in Model.BookList)
+        {
+            <tr style="height:35px">
+                <td>@book.id_book</td>
+                <td>@book.isbn</td>
+                <td>@book.nm_book</td>
+                <td>@book.publisher</td>
+                <td>@book.note</td>
+                <td>@book.date_update</td>
+                <td style="text-align:center;"><a href="UpdateBook2/@book.id_book"><input style="height:33px;" type="submit" value="編集" /></a></td>
+
+            </tr>
+        }
+    </table>
+</div>

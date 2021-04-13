@@ -1,0 +1,64 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "UpdateEmp";
+
+    List<SelectListItem> listDep = new List<SelectListItem>();
+    listDep.Add(new SelectListItem { Value = "3", Text = "3: 人事部" });
+    listDep.Add(new SelectListItem { Value = "4", Text = "4: 総務部" });
+    listDep.Add(new SelectListItem { Value = "5", Text = "5: BS本部" });
+    listDep.Add(new SelectListItem { Value = "6", Text = "6: FS本部" });
+    listDep.Add(new SelectListItem { Value = "7", Text = "7: 営業本部" });
+    listDep.Add(new SelectListItem { Value = "8", Text = "8: CS本部" });
+    listDep.Add(new SelectListItem { Value = "9", Text = "9: ES本部" });
+    listDep.Add(new SelectListItem { Value = "10", Text = "10: TS本部" });
+
+    List<SelectListItem> listAdmin = new List<SelectListItem>();
+    listAdmin.Add(new SelectListItem { Value = "0", Text = "0: 一般" });
+    listAdmin.Add(new SelectListItem { Value = "1", Text = "1: 管理者" });
+
+    List<SelectListItem> listRetire = new List<SelectListItem>();
+    listRetire.Add(new SelectListItem { Value = "0", Text = "0: 所属" });
+    listRetire.Add(new SelectListItem { Value = "1", Text = "1: 退職済" });
+}
+<link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" />
+<h1 style="margin-bottom:20px">社員情報編集</h1>
+
+<div class="row" style="margin-bottom:50px">
+    <div class="col-md-4">
+        <form asp-controller="Manager" asp-action="UpdateEmp">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.nm_employee" class="h5"></label>
+                <input asp-for="@Model.nm_employee" class="form-control" value="@Model.nm_employee" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.kn_employee" class="h5"></label>
+                <input asp-for="@Model.kn_employee" class="form-control" value="@Model.kn_employee" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.mail_address" class="h5"></label>
+                <input asp-for="@Model.mail_address" class="form-control" value="@Model.mail_address" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.password" class="h5"></label>
+                <input asp-for="@Model.password" class="form-control" value="@Model.password" />
+            </div>
+            <div class="form-group" style="margin-top:40px">
+                <label asp-for="@Model.id_department" class="h5"></label>
+                <select style="margin-left:50px; height:30px; width:230px" asp-for="@Model.id_department" asp-items="@listDep"></select>
+            </div>
+            <div class="form-group" style="margin-top:30px">
+                <label asp-for="@Model.flg_admin" class="h5"></label>
+                <select style="margin-left:10px; height:30px; width:230px" asp-for="@Model.flg_admin" asp-items="@listAdmin"></select>
+            </div>
+            <div class="form-group" style="margin-top:30px; margin-bottom:50px">
+                <label asp-for="@Model.flg_retirement" class="h5"></label>
+                <select style="margin-left:30px; height:30px; width:230px" asp-for="@Model.flg_retirement" asp-items="@listRetire"></select>
+            </div>
+            <div class="form-group form-inline">
+                <input class="btn" type="submit" value="更新" style="margin-right:60%" />
+                <input class="btn" asp-controller="Manager" asp-action="SelectEmp" type="submit" value="戻る" /></a>
+            </div>
+        </form>
+    </div>
+</div>

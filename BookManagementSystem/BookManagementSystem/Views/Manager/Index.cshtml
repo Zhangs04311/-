@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Index_Manager";
+}
+<style type="text/css">
+    a:link {color: #34495E;}
+</style>
+
+<h1>メニュー</h1>
+
+
+<table align="center" style="font-size: 20px; font-weight:600">
+
+    <tr>
+        <th  width="150" height="200"><img src="~/img/Man.png" /></th>
+        <th width="80"></th>
+        <th width="150" height="200" align="center"><img src="~/img/Book.png" /></th>
+    </tr>
+    <tr>
+        <td align="center" height="50"></td>
+        <td></td>
+        <td align="center" height="50"><a asp-controller="Home" asp-action="SelectBook">書籍検索</a></td>
+    </tr>
+    <tr>
+        <td align="center" height="50"><a asp-controller="Manager" asp-action="InsertEmp">社員登録</a></td>
+        <td></td>
+        <td align="center" height="50"><a asp-controller="Manager" asp-action="InsertBook">書籍登録</a></td>
+</tr>
+    <tr>
+        <td align="center" height="50"><a asp-controller="Manager" asp-action="SelectEmp">社員検索</a></td>
+        <td></td>
+        <td align="center" height="50"><a asp-controller="Manager" asp-action="UpdateBook">書籍編集</a></td>
+</tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td align="center" height="50"><a asp-controller="Manager" asp-action="Approval">書籍貸出承認</a></td>
+</tr>
+</table>

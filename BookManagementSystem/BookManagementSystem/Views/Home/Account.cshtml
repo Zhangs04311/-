@@ -1,0 +1,46 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Account";
+}
+<link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" />
+
+<h1>ユーザ情報</h1>
+
+<table border="1" align="center" style="background-color:#CCD1D1; text-align:center">
+    <tr>
+        <th width="180" height="50">項目</th>
+        <th width="300">ユーザ情報</th>
+    </tr>
+    <tr>
+        <td height="60">ユーザ名</td>
+        <td height="60" style="background-color:white">@Model.nm_employee</td>
+    </tr>
+    <tr>
+        <td height="60">ユーザ名フリガナ</td>
+        <td height="60" style="background-color:white">@Model.kn_employee</td>
+    </tr>
+    <tr>
+        <td height="60">メールアドレス</td>
+        <td height="60" style="background-color:white">@Model.mail_address</td>
+    </tr>
+    <tr>
+        <td height="60">パスワード</td>
+        <td height="60" style="background-color:white">@Model.password</td>
+    </tr>
+    <tr>
+        <td height="60">部署ID</td>
+        <td height="60" style="background-color:white">@Model.id_department</td>
+    </tr>
+</table>
+<div style="text-align:center;margin-top:50px">
+    <a href="Index"><input class="btn" style="margin-right:30%" type="button" value="ログアウト" /></a>
+    @if (Model.flg_admin == "1")
+    {
+        <a href="~/Manager/Index"><input class="btn" type="button" value="メニューに戻る" /></a>
+    }
+    else
+    {
+        <a href="~/User/Index"><input class="btn" type="button" value="メニューに戻る" /></a>
+    }
+
+</div>

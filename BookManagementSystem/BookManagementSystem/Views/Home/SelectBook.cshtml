@@ -1,0 +1,58 @@
+﻿@model SelectBookModel
+@{
+    ViewData["Title"] = "SelectBook";
+}
+<link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" />
+
+<h1>書籍検索</h1>
+
+<form asp-controller="Home" asp-action="SelectBook" class="Selectbox">
+    <p>検索条件</p>
+    <div asp-validation-summary="All"></div>
+
+    <label asp-for="@Model.SelectedName" class="h7"></label>
+    <input style="margin-right:30px;" asp-for="@Model.SelectedName" value="" />
+    <label asp-for="@Model.SelectedPub" class="h7"></label>
+    <input style="margin-right:30px;" asp-for="@Model.SelectedPub" value="" />
+    <label asp-for="@Model.SelectNote" class="h7"></label>
+    <input style="margin-right:30px;" asp-for="@Model.SelectNote" value="" />
+    <input class="btn" style="height:33px;" type="submit" value="検索" />
+</form>
+<p></p>
+
+<div style="margin-bottom:50px">
+    <table border="1">
+        <tr style="background-color: #CCD1D1;">
+            <th>蔵書ID</th>
+            <th width="200">ISBNコード</th>
+            <th width="250">書籍名</th>
+            <th width="230">出版社</th>
+            <th width="180">特記事項</th>
+            <th>ステータス</th>
+            <th width="70"></th>
+        </tr>
+        @foreach (var book in Model.BookList)
+        {
+        <tr style="height:35px">
+            <td>@book.id_book</td>
+            <td>@book.isbn</td>
+            <td>@book.nm_book</td>
+            <td>@book.publisher</td>
+            <td>@book.note</td>
+
+            @if (book.status == "貸出可能")
+            {
+                <td>@book.status</td>
+                <td style="text-align:center;"><a href="~/User/Apply/@book.id_book"><input style="height:33px;" type="submit" value="貸出" /></a></td>
+            }
+            else
+            {
+                <td style="color:red">@book.status</td>
+                <td style="text-align:center;"></td>
+            }
+        </tr>
+            }
+    </table>
+</div>
+
+

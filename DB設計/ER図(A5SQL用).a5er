@@ -1,0 +1,234 @@
+﻿# A5:ER FORMAT:13
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright (C)2007 m.matsubara
+# A5:SQL Mk-2 Copyright (C)1997 m.matsubara
+#  http://www.wind.sannet.ne.jp/m_matsu/developer/a5m2/
+
+[Manager]
+ProjectName=
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",2,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=2
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=6
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+ShowTag=1
+ShowCommonAttributes=0
+
+[Entity]
+PName=book_collection
+LName=蔵書マスタ
+Comment=
+TableOption=
+Page=Main
+Left=50
+Top=50
+Field="蔵書ID","id_book","int(11) auto_increment","NOT NULL",0,"","",$FFFFFFFF,""
+Field="ISBN","isbn","varchar(13)","NOT NULL",,"","",$FFFFFFFF,""
+Field="特記事項","note","text",,,"","",$FFFFFFFF,""
+Field="廃棄フラグ","flg_disposal","char(1)","NOT NULL",,"","",$FFFFFFFF,""
+Field="更新者","id_update","int(11)","NOT NULL",,"","",$FFFFFFFF,""
+Field="更新日","date_update","timestamp","NOT NULL",,"","",$FFFFFFFF,""
+Index=isbn=0,isbn
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",50,50
+ZOrder=8
+
+[Entity]
+PName=books
+LName=書籍マスタ
+Comment=
+TableOption=
+Page=Main
+Left=100
+Top=450
+Field="ISBN","isbn","varchar(13)","NOT NULL",0,"","",$FFFFFFFF,""
+Field="書籍名","nm_book","varchar(50)","NOT NULL",,"","",$FFFFFFFF,""
+Field="書籍名よみ","kn_book","varchar(100)",,,"","",$FFFFFFFF,""
+Field="出版社","publisher","varchar(50)",,,"","",$FFFFFFFF,""
+Field="更新者","id_update","int(11)","NOT NULL",,"","",$FFFFFFFF,""
+Field="更新日","date_update","timestamp","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",100,450,133,151
+ZOrder=7
+
+[Entity]
+PName=borrow_books
+LName=貸出テーブル
+Comment=
+TableOption=
+Page=Main
+Left=400
+Top=250
+Field="申請ID","id_request","int(11) auto_increment","NOT NULL",0,"","",$FFFFFFFF,""
+Field="申請者","id_employee","int(11)","NOT NULL",,"","",$FFFFFFFF,""
+Field="蔵書ID","id_book","int(11)","NOT NULL",,"","",$FFFFFFFF,""
+Field="申請日","date_request","date","NOT NULL",,"","",$FFFFFFFF,""
+Field="ステータス","status","char(1)","NOT NULL",,"","",$FFFFFFFF,""
+Field="承認者","id_approval","int(11)",,,"","",$FFFFFFFF,""
+Field="承認日","date_approval","date",,,"","",$FFFFFFFF,""
+Field="貸出日","date_borrow","date",,,"","",$FFFFFFFF,""
+Field="返却予定日","date","date",,,"","",$FFFFFFFF,""
+Field="返却日","date_return","date",,,"","",$FFFFFFFF,""
+Field="更新者","id_update","int(11)","NOT NULL",,"","",$FFFFFFFF,""
+Field="更新日","date_update","timestamp","NOT NULL",,"","",$FFFFFFFF,""
+Index=id_employee=0,id_employee
+Index=id_book=0,id_book
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",400,250
+ZOrder=6
+
+[Entity]
+PName=department
+LName=部署マスタ
+Comment=
+TableOption=
+Page=Main
+Left=550
+Top=50
+Field="部署ID","id_department","int(11) auto_increment","NOT NULL",0,"","",$FFFFFFFF,""
+Field="部署名","nm_department","varchar(50)","NOT NULL",,"","",$FFFFFFFF,""
+Field="更新者","id_update","int(11)","NOT NULL",,"","",$FFFFFFFF,""
+Field="更新日","date_update","timestamp","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",550,50
+ZOrder=5
+
+[Entity]
+PName=employee
+LName=社員マスタ
+Comment=
+TableOption=
+Page=Main
+Left=950
+Top=300
+Field="ユーザID","id_employee","int(11) auto_increment","NOT NULL",0,"","",$FFFFFFFF,""
+Field="ユーザ名","nm_employee","varchar(50)","NOT NULL",,"","",$FFFFFFFF,""
+Field="ふりがな","kn_employee","varchar(50)","NOT NULL",,"","",$FFFFFFFF,""
+Field="メールアドレス","mail_address","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="パスワード","password","varchar(10)","NOT NULL",,"","",$FFFFFFFF,""
+Field="部署ID","id_department","int(11)","NOT NULL",,"","",$FFFFFFFF,""
+Field="管理者フラグ","flg_admin","char(1)","NOT NULL",,"","",$FFFFFFFF,""
+Field="退職フラグ","flg_retirement","char(1)","NOT NULL",,"","",$FFFFFFFF,""
+Field="更新者","id_update","int(11)","NOT NULL",,"","",$FFFFFFFF,""
+Field="更新日","date_update","timestamp","NOT NULL",,"","",$FFFFFFFF,""
+Index=mail_address=2,mail_address
+Index=id_department=0,id_department
+Index=mail_address_2=0,mail_address
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",950,300
+ZOrder=4
+
+[Relation]
+Entity1=book_collection
+Entity2=borrow_books
+RelationType1=1
+RelationType2=3
+Fields1=id_book
+Fields2=id_book
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,4631,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=463
+Bar3=50
+TermPos1=R
+TermPos2=R
+ZOrder=1
+
+[Relation]
+Entity1=department
+Entity2=employee
+RelationType1=1
+RelationType2=3
+Fields1=id_department
+Fields2=id_department
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,0,7030,1835,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=0
+Bar2=703
+Bar3=184
+TermPos1=R
+TermPos2=R
+ZOrder=0
+
+[Relation]
+Entity1=books
+Entity2=book_collection
+RelationType1=1
+RelationType2=3
+Fields1=isbn
+Fields2=isbn
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,6282,1220,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=628
+Bar3=122
+TermPos1=R
+TermPos2=R
+ZOrder=3
+
+[Relation]
+Entity1=employee
+Entity2=borrow_books
+RelationType1=1
+RelationType2=3
+Fields1=id_employee
+Fields2=id_employee
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,4543,3271,2735,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=454
+Bar2=327
+Bar3=274
+TermPos1=R
+TermPos2=R
+ZOrder=2
